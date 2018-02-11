@@ -1,0 +1,527 @@
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+in_age (InputLayer)             (None, None, 2)      0                                            
+__________________________________________________________________________________________________
+in_bio (InputLayer)             (None, None, 7)      0                                            
+__________________________________________________________________________________________________
+in_fielding_position (InputLaye (None, None, 2)      0                                            
+__________________________________________________________________________________________________
+in_out_fielding_position (Input (None, None, 12)     0                                            
+__________________________________________________________________________________________________
+in_out_league_offense (InputLay (None, None, 9)      0                                            
+__________________________________________________________________________________________________
+in_out_park_factors (InputLayer (None, None, 8)      0                                            
+__________________________________________________________________________________________________
+in_out_plate_discipline (InputL (None, None, 8)      0                                            
+__________________________________________________________________________________________________
+in_out_running (InputLayer)     (None, None, 18)     0                                            
+__________________________________________________________________________________________________
+in_out_saber (InputLayer)       (None, None, 14)     0                                            
+__________________________________________________________________________________________________
+in_out_stats_extended (InputLay (None, None, 36)     0                                            
+__________________________________________________________________________________________________
+in_park_factors (InputLayer)    (None, None, 8)      0                                            
+__________________________________________________________________________________________________
+masked_in_age (Masking)         (None, None, 2)      0           in_age[0][0]                     
+__________________________________________________________________________________________________
+masked_in_bio (Masking)         (None, None, 7)      0           in_bio[0][0]                     
+__________________________________________________________________________________________________
+masked_in_fielding_position (Ma (None, None, 2)      0           in_fielding_position[0][0]       
+__________________________________________________________________________________________________
+masked_in_out_fielding_position (None, None, 12)     0           in_out_fielding_position[0][0]   
+__________________________________________________________________________________________________
+masked_in_out_league_offense (M (None, None, 9)      0           in_out_league_offense[0][0]      
+__________________________________________________________________________________________________
+masked_in_out_park_factors (Mas (None, None, 8)      0           in_out_park_factors[0][0]        
+__________________________________________________________________________________________________
+masked_in_out_plate_discipline  (None, None, 8)      0           in_out_plate_discipline[0][0]    
+__________________________________________________________________________________________________
+masked_in_out_running (Masking) (None, None, 18)     0           in_out_running[0][0]             
+__________________________________________________________________________________________________
+masked_in_out_saber (Masking)   (None, None, 14)     0           in_out_saber[0][0]               
+__________________________________________________________________________________________________
+masked_in_out_stats_extended (M (None, None, 36)     0           in_out_stats_extended[0][0]      
+__________________________________________________________________________________________________
+masked_in_park_factors (Masking (None, None, 8)      0           in_park_factors[0][0]            
+__________________________________________________________________________________________________
+time_distributed_5 (TimeDistrib (None, None, 1)      0           masked_in_age[0][0]              
+__________________________________________________________________________________________________
+time_distributed_7 (TimeDistrib (None, None, 6)      0           masked_in_bio[0][0]              
+__________________________________________________________________________________________________
+time_distributed_2 (TimeDistrib (None, None, 1)      0           masked_in_fielding_position[0][0]
+__________________________________________________________________________________________________
+time_distributed_8 (TimeDistrib (None, None, 11)     0           masked_in_out_fielding_position[0
+__________________________________________________________________________________________________
+time_distributed_4 (TimeDistrib (None, None, 8)      0           masked_in_out_league_offense[0][0
+__________________________________________________________________________________________________
+time_distributed_3 (TimeDistrib (None, None, 7)      0           masked_in_out_park_factors[0][0] 
+__________________________________________________________________________________________________
+time_distributed_9 (TimeDistrib (None, None, 7)      0           masked_in_out_plate_discipline[0]
+__________________________________________________________________________________________________
+time_distributed_6 (TimeDistrib (None, None, 17)     0           masked_in_out_running[0][0]      
+__________________________________________________________________________________________________
+time_distributed_1 (TimeDistrib (None, None, 13)     0           masked_in_out_saber[0][0]        
+__________________________________________________________________________________________________
+time_distributed_11 (TimeDistri (None, None, 35)     0           masked_in_out_stats_extended[0][0
+__________________________________________________________________________________________________
+time_distributed_10 (TimeDistri (None, None, 7)      0           masked_in_park_factors[0][0]     
+__________________________________________________________________________________________________
+norm_in_age (BatchNormalization (None, None, 1)      4           time_distributed_5[0][0]         
+__________________________________________________________________________________________________
+norm_in_bio (BatchNormalization (None, None, 6)      24          time_distributed_7[0][0]         
+__________________________________________________________________________________________________
+norm_in_fielding_position (Batc (None, None, 1)      4           time_distributed_2[0][0]         
+__________________________________________________________________________________________________
+norm_in_out_fielding_position ( (None, None, 11)     44          time_distributed_8[0][0]         
+__________________________________________________________________________________________________
+norm_in_out_league_offense (Bat (None, None, 8)      32          time_distributed_4[0][0]         
+__________________________________________________________________________________________________
+norm_in_out_park_factors (Batch (None, None, 7)      28          time_distributed_3[0][0]         
+__________________________________________________________________________________________________
+norm_in_out_plate_discipline (B (None, None, 7)      28          time_distributed_9[0][0]         
+__________________________________________________________________________________________________2018-02-07 19:00:15.505975: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2018-02-07 19:00:22.216495: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1105] Found device 0 with properties: 
+name: Tesla K80 major: 3 minor: 7 memoryClockRate(GHz): 0.8235
+pciBusID: eca0:00:00.0
+totalMemory: 11.17GiB freeMemory: 11.10GiB
+2018-02-07 19:00:22.216541: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1195] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla K80, pci bus id: eca0:00:00.0, compute capability: 3.7)
+
+norm_in_out_running (BatchNorma (None, None, 17)     68          time_distributed_6[0][0]         
+__________________________________________________________________________________________________
+norm_in_out_saber (BatchNormali (None, None, 13)     52          time_distributed_1[0][0]         
+__________________________________________________________________________________________________
+norm_in_out_stats_extended (Bat (None, None, 35)     140         time_distributed_11[0][0]        
+__________________________________________________________________________________________________
+norm_in_park_factors (BatchNorm (None, None, 7)      28          time_distributed_10[0][0]        
+__________________________________________________________________________________________________
+concatenate_1 (Concatenate)     (None, None, 113)    0           norm_in_age[0][0]                
+                                                                 norm_in_bio[0][0]                
+                                                                 norm_in_fielding_position[0][0]  
+                                                                 norm_in_out_fielding_position[0][
+                                                                 norm_in_out_league_offense[0][0] 
+                                                                 norm_in_out_park_factors[0][0]   
+                                                                 norm_in_out_plate_discipline[0][0
+                                                                 norm_in_out_running[0][0]        
+                                                                 norm_in_out_saber[0][0]          
+                                                                 norm_in_out_stats_extended[0][0] 
+                                                                 norm_in_park_factors[0][0]       
+__________________________________________________________________________________________________
+gru_1 (GRU)                     (None, None, 113)    76953       concatenate_1[0][0]              
+__________________________________________________________________________________________________
+gru_2 (GRU)                     (None, None, 113)    76953       gru_1[0][0]                      
+__________________________________________________________________________________________________
+mv_out_stats (TimeDistributed)  (None, None, 5)      4560        gru_2[0][0]                      
+__________________________________________________________________________________________________
+mv_out_counts (TimeDistributed) (None, None, 3)      2736        gru_2[0][0]                      
+__________________________________________________________________________________________________
+mv_out_mean_covariance (TimeDis (None, None, 72)     65664       gru_2[0][0]                      
+__________________________________________________________________________________________________
+mv_out_fielding_position (TimeD (None, None, 11)     10032       gru_2[0][0]                      
+__________________________________________________________________________________________________
+out_stats (Activation)          (None, None, 5)      0           mv_out_stats[0][0]               
+__________________________________________________________________________________________________
+out_counts (Activation)         (None, None, 3)      0           mv_out_counts[0][0]              
+__________________________________________________________________________________________________
+out_mean_covariance (Activation (None, None, 72)     0           mv_out_mean_covariance[0][0]     
+__________________________________________________________________________________________________
+out_fielding_position (Activati (None, None, 11)     0           mv_out_fielding_position[0][0]   
+==================================================================================================
+Total params: 237,350
+Trainable params: 237,124
+Non-trainable params: 226
+__________________________________________________________________________________________________
+Train on 5879 samples, validate on 1409 samples
+Epoch 1/1000
+
+Epoch 00001: val_loss improved from inf to 20.48285, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 15s - loss: 21.9994 - out_stats_loss: 8.4461 - out_counts_loss: 3.7908 - out_mean_covariance_loss: 105.2937 - out_fielding_position_loss: 4.4978 - val_loss: 20.4828 - val_out_stats_loss: 8.0019 - val_out_counts_loss: 3.2008 - val_out_mean_covariance_loss: 99.9246 - val_out_fielding_position_loss: 4.2839
+Epoch 2/1000
+
+Epoch 00002: val_loss improved from 20.48285 to 17.66379, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 18.8197 - out_stats_loss: 7.1959 - out_counts_loss: 2.8833 - out_mean_covariance_loss: 92.3739 - out_fielding_position_loss: 4.1219 - val_loss: 17.6638 - val_out_stats_loss: 6.7238 - val_out_counts_loss: 2.6262 - val_out_mean_covariance_loss: 87.4841 - val_out_fielding_position_loss: 3.9396
+Epoch 3/1000
+
+Epoch 00003: val_loss improved from 17.66379 to 16.12004, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 16.7072 - out_stats_loss: 6.2529 - out_counts_loss: 2.5907 - out_mean_covariance_loss: 81.5768 - out_fielding_position_loss: 3.7848 - val_loss: 16.1200 - val_out_stats_loss: 6.0929 - val_out_counts_loss: 2.4417 - val_out_mean_covariance_loss: 78.8076 - val_out_fielding_position_loss: 3.6451
+Epoch 4/1000
+
+Epoch 00004: val_loss improved from 16.12004 to 15.31654, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 15.6389 - out_stats_loss: 5.8648 - out_counts_loss: 2.4772 - out_mean_covariance_loss: 75.7743 - out_fielding_position_loss: 3.5082 - val_loss: 15.3165 - val_out_stats_loss: 5.8580 - val_out_counts_loss: 2.3639 - val_out_mean_covariance_loss: 74.3760 - val_out_fielding_position_loss: 3.3758
+Epoch 5/1000
+
+Epoch 00005: val_loss improved from 15.31654 to 14.78428, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 15.0279 - out_stats_loss: 5.6968 - out_counts_loss: 2.4174 - out_mean_covariance_loss: 72.5778 - out_fielding_position_loss: 3.2848 - val_loss: 14.7843 - val_out_stats_loss: 5.7197 - val_out_counts_loss: 2.3053 - val_out_mean_covariance_loss: 71.7270 - val_out_fielding_position_loss: 3.1729
+Epoch 6/1000
+
+Epoch 00006: val_loss improved from 14.78428 to 14.43142, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 14.5249 - out_stats_loss: 5.5667 - out_counts_loss: 2.3597 - out_mean_covariance_loss: 69.9467 - out_fielding_position_loss: 3.1012 - val_loss: 14.4314 - val_out_stats_loss: 5.6367 - val_out_counts_loss: 2.2783 - val_out_mean_covariance_loss: 69.9481 - val_out_fielding_position_loss: 3.0190
+Epoch 7/1000
+
+Epoch 00007: val_loss improved from 14.43142 to 14.19730, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 14.2289 - out_stats_loss: 5.5006 - out_counts_loss: 2.3230 - out_mean_covariance_loss: 68.6588 - out_fielding_position_loss: 2.9723 - val_loss: 14.1973 - val_out_stats_loss: 5.5765 - val_out_counts_loss: 2.2758 - val_out_mean_covariance_loss: 68.9559 - val_out_fielding_position_loss: 2.8972
+Epoch 8/1000
+
+Epoch 00008: val_loss improved from 14.19730 to 14.01120, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 14.0485 - out_stats_loss: 5.4639 - out_counts_loss: 2.3062 - out_mean_covariance_loss: 67.9722 - out_fielding_position_loss: 2.8799 - val_loss: 14.0112 - val_out_stats_loss: 5.5373 - val_out_counts_loss: 2.2548 - val_out_mean_covariance_loss: 68.2506 - val_out_fielding_position_loss: 2.8066
+Epoch 9/1000
+
+Epoch 00009: val_loss improved from 14.01120 to 13.95033, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 13.8427 - out_stats_loss: 5.4014 - out_counts_loss: 2.2873 - out_mean_covariance_loss: 67.0013 - out_fielding_position_loss: 2.8040 - val_loss: 13.9503 - val_out_stats_loss: 5.5354 - val_out_counts_loss: 2.2816 - val_out_mean_covariance_loss: 68.0068 - val_out_fielding_position_loss: 2.7330
+Epoch 10/1000
+
+Epoch 00010: val_loss improved from 13.95033 to 13.76135, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 13.6955 - out_stats_loss: 5.3744 - out_counts_loss: 2.2709 - out_mean_covariance_loss: 66.5112 - out_fielding_position_loss: 2.7246 - val_loss: 13.7613 - val_out_stats_loss: 5.4644 - val_out_counts_loss: 2.2421 - val_out_mean_covariance_loss: 67.4214 - val_out_fielding_position_loss: 2.6838
+Epoch 11/1000
+
+Epoch 00011: val_loss improved from 13.76135 to 13.68036, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 13.5553 - out_stats_loss: 5.3251 - out_counts_loss: 2.2645 - out_mean_covariance_loss: 65.9875 - out_fielding_position_loss: 2.6664 - val_loss: 13.6804 - val_out_stats_loss: 5.4544 - val_out_counts_loss: 2.2355 - val_out_mean_covariance_loss: 67.0499 - val_out_fielding_position_loss: 2.6380
+Epoch 12/1000
+
+Epoch 00012: val_loss did not improve
+ - 5s - loss: 13.5155 - out_stats_loss: 5.3189 - out_counts_loss: 2.2568 - out_mean_covariance_loss: 65.9402 - out_fielding_position_loss: 2.6428 - val_loss: 13.6814 - val_out_stats_loss: 5.4469 - val_out_counts_loss: 2.2614 - val_out_mean_covariance_loss: 66.9293 - val_out_fielding_position_loss: 2.6266
+Epoch 13/1000
+
+Epoch 00013: val_loss improved from 13.68036 to 13.53623, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 13.3589 - out_stats_loss: 5.2600 - out_counts_loss: 2.2377 - out_mean_covariance_loss: 65.0040 - out_fielding_position_loss: 2.6109 - val_loss: 13.5362 - val_out_stats_loss: 5.4174 - val_out_counts_loss: 2.2155 - val_out_mean_covariance_loss: 66.3828 - val_out_fielding_position_loss: 2.5842
+Epoch 14/1000
+
+Epoch 00014: val_loss improved from 13.53623 to 13.46238, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 13.3075 - out_stats_loss: 5.2566 - out_counts_loss: 2.2234 - out_mean_covariance_loss: 64.8212 - out_fielding_position_loss: 2.5864 - val_loss: 13.4624 - val_out_stats_loss: 5.3777 - val_out_counts_loss: 2.2103 - val_out_mean_covariance_loss: 66.2373 - val_out_fielding_position_loss: 2.5625
+Epoch 15/1000
+
+Epoch 00015: val_loss improved from 13.46238 to 13.43585, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 13.2260 - out_stats_loss: 5.2204 - out_counts_loss: 2.2119 - out_mean_covariance_loss: 64.5030 - out_fielding_position_loss: 2.5686 - val_loss: 13.4359 - val_out_stats_loss: 5.3827 - val_out_counts_loss: 2.2088 - val_out_mean_covariance_loss: 66.1022 - val_out_fielding_position_loss: 2.5392
+Epoch 16/1000
+
+Epoch 00016: val_loss improved from 13.43585 to 13.41028, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 13.1410 - out_stats_loss: 5.1979 - out_counts_loss: 2.1979 - out_mean_covariance_loss: 64.1784 - out_fielding_position_loss: 2.5363 - val_loss: 13.4103 - val_out_stats_loss: 5.3689 - val_out_counts_loss: 2.2148 - val_out_mean_covariance_loss: 65.8494 - val_out_fielding_position_loss: 2.5341
+Epoch 17/1000
+
+Epoch 00017: val_loss improved from 13.41028 to 13.35607, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 13.0873 - out_stats_loss: 5.1864 - out_counts_loss: 2.1970 - out_mean_covariance_loss: 63.7180 - out_fielding_position_loss: 2.5181 - val_loss: 13.3561 - val_out_stats_loss: 5.3500 - val_out_counts_loss: 2.2043 - val_out_mean_covariance_loss: 65.7039 - val_out_fielding_position_loss: 2.5166
+Epoch 18/1000
+
+Epoch 00018: val_loss improved from 13.35607 to 13.33803, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 12.9973 - out_stats_loss: 5.1493 - out_counts_loss: 2.1596 - out_mean_covariance_loss: 63.7820 - out_fielding_position_loss: 2.4992 - val_loss: 13.3380 - val_out_stats_loss: 5.3412 - val_out_counts_loss: 2.2151 - val_out_mean_covariance_loss: 65.5499 - val_out_fielding_position_loss: 2.5042
+Epoch 19/1000
+
+Epoch 00019: val_loss did not improve
+ - 5s - loss: 12.9893 - out_stats_loss: 5.1609 - out_counts_loss: 2.1522 - out_mean_covariance_loss: 63.8934 - out_fielding_position_loss: 2.4815 - val_loss: 13.3559 - val_out_stats_loss: 5.3418 - val_out_counts_loss: 2.2278 - val_out_mean_covariance_loss: 65.6940 - val_out_fielding_position_loss: 2.5016
+Epoch 20/1000
+
+Epoch 00020: val_loss improved from 13.33803 to 13.25728, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 12.9039 - out_stats_loss: 5.1227 - out_counts_loss: 2.1344 - out_mean_covariance_loss: 63.3636 - out_fielding_position_loss: 2.4787 - val_loss: 13.2573 - val_out_stats_loss: 5.3162 - val_out_counts_loss: 2.1891 - val_out_mean_covariance_loss: 65.2099 - val_out_fielding_position_loss: 2.4914
+Epoch 21/1000
+
+Epoch 00021: val_loss did not improve
+ - 5s - loss: 12.8235 - out_stats_loss: 5.1094 - out_counts_loss: 2.1248 - out_mean_covariance_loss: 63.0554 - out_fielding_position_loss: 2.4366 - val_loss: 13.2619 - val_out_stats_loss: 5.3178 - val_out_counts_loss: 2.1961 - val_out_mean_covariance_loss: 65.1853 - val_out_fielding_position_loss: 2.4888
+Epoch 22/1000
+
+Epoch 00022: val_loss improved from 13.25728 to 13.22576, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 12.7615 - out_stats_loss: 5.0775 - out_counts_loss: 2.1085 - out_mean_covariance_loss: 62.7843 - out_fielding_position_loss: 2.4364 - val_loss: 13.2258 - val_out_stats_loss: 5.3016 - val_out_counts_loss: 2.1940 - val_out_mean_covariance_loss: 65.0262 - val_out_fielding_position_loss: 2.4788
+Epoch 23/1000
+
+Epoch 00023: val_loss improved from 13.22576 to 13.20113, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 12.7733 - out_stats_loss: 5.0982 - out_counts_loss: 2.1183 - out_mean_covariance_loss: 62.7397 - out_fielding_position_loss: 2.4198 - val_loss: 13.2011 - val_out_stats_loss: 5.2959 - val_out_counts_loss: 2.1904 - val_out_mean_covariance_loss: 64.8754 - val_out_fielding_position_loss: 2.4711
+Epoch 24/1000
+
+Epoch 00024: val_loss improved from 13.20113 to 13.18647, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 12.6611 - out_stats_loss: 5.0552 - out_counts_loss: 2.0954 - out_mean_covariance_loss: 62.1490 - out_fielding_position_loss: 2.4031 - val_loss: 13.1865 - val_out_stats_loss: 5.2943 - val_out_counts_loss: 2.1850 - val_out_mean_covariance_loss: 64.8193 - val_out_fielding_position_loss: 2.4662
+Epoch 25/1000
+
+Epoch 00025: val_loss improved from 13.18647 to 13.18146, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 12.6202 - out_stats_loss: 5.0404 - out_counts_loss: 2.0736 - out_mean_covariance_loss: 62.1089 - out_fielding_position_loss: 2.4007 - val_loss: 13.1815 - val_out_stats_loss: 5.2929 - val_out_counts_loss: 2.1905 - val_out_mean_covariance_loss: 64.8005 - val_out_fielding_position_loss: 2.4580
+Epoch 26/1000
+
+Epoch 00026: val_loss did not improve
+ - 5s - loss: 12.6204 - out_stats_loss: 5.0614 - out_counts_loss: 2.0583 - out_mean_covariance_loss: 62.3813 - out_fielding_position_loss: 2.3816 - val_loss: 13.1975 - val_out_stats_loss: 5.3037 - val_out_counts_loss: 2.2100 - val_out_mean_covariance_loss: 64.6407 - val_out_fielding_position_loss: 2.4517
+Epoch 27/1000
+
+Epoch 00027: val_loss improved from 13.18146 to 13.15731, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 12.5291 - out_stats_loss: 5.0178 - out_counts_loss: 2.0510 - out_mean_covariance_loss: 61.7145 - out_fielding_position_loss: 2.3746 - val_loss: 13.1573 - val_out_stats_loss: 5.2880 - val_out_counts_loss: 2.1943 - val_out_mean_covariance_loss: 64.6095 - val_out_fielding_position_loss: 2.4446
+Epoch 28/1000
+
+Epoch 00028: val_loss did not improve
+ - 5s - loss: 12.5166 - out_stats_loss: 5.0319 - out_counts_loss: 2.0437 - out_mean_covariance_loss: 61.7647 - out_fielding_position_loss: 2.3527 - val_loss: 13.1878 - val_out_stats_loss: 5.2934 - val_out_counts_loss: 2.2171 - val_out_mean_covariance_loss: 64.6472 - val_out_fielding_position_loss: 2.4449
+Epoch 29/1000
+
+Epoch 00029: val_loss did not improve
+ - 5s - loss: 12.5243 - out_stats_loss: 5.0395 - out_counts_loss: 2.0561 - out_mean_covariance_loss: 61.9153 - out_fielding_position_loss: 2.3329 - val_loss: 13.1794 - val_out_stats_loss: 5.2913 - val_out_counts_loss: 2.2203 - val_out_mean_covariance_loss: 64.5723 - val_out_fielding_position_loss: 2.4391
+Epoch 30/1000
+
+Epoch 00030: val_loss improved from 13.15731 to 13.14183, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 12.4102 - out_stats_loss: 4.9998 - out_counts_loss: 2.0187 - out_mean_covariance_loss: 61.3077 - out_fielding_position_loss: 2.3263 - val_loss: 13.1418 - val_out_stats_loss: 5.2900 - val_out_counts_loss: 2.2042 - val_out_mean_covariance_loss: 64.4177 - val_out_fielding_position_loss: 2.4268
+Epoch 31/1000
+
+Epoch 00031: val_loss improved from 13.14183 to 13.12056, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 12.3900 - out_stats_loss: 5.0096 - out_counts_loss: 2.0034 - out_mean_covariance_loss: 61.2406 - out_fielding_position_loss: 2.3150 - val_loss: 13.1206 - val_out_stats_loss: 5.2912 - val_out_counts_loss: 2.1951 - val_out_mean_covariance_loss: 64.3000 - val_out_fielding_position_loss: 2.4192
+Epoch 32/1000
+
+Epoch 00032: val_loss improved from 13.12056 to 13.09673, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 12.3620 - out_stats_loss: 4.9966 - out_counts_loss: 1.9891 - out_mean_covariance_loss: 61.2715 - out_fielding_position_loss: 2.3127 - val_loss: 13.0967 - val_out_stats_loss: 5.2624 - val_out_counts_loss: 2.1961 - val_out_mean_covariance_loss: 64.3004 - val_out_fielding_position_loss: 2.4232
+Epoch 33/1000
+
+Epoch 00033: val_loss improved from 13.09673 to 13.09395, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 12.3155 - out_stats_loss: 4.9862 - out_counts_loss: 1.9715 - out_mean_covariance_loss: 61.4536 - out_fielding_position_loss: 2.2851 - val_loss: 13.0940 - val_out_stats_loss: 5.2766 - val_out_counts_loss: 2.1916 - val_out_mean_covariance_loss: 64.1516 - val_out_fielding_position_loss: 2.4182
+Epoch 34/1000
+
+Epoch 00034: val_loss did not improve
+ - 5s - loss: 12.2735 - out_stats_loss: 4.9757 - out_counts_loss: 1.9792 - out_mean_covariance_loss: 60.7736 - out_fielding_position_loss: 2.2800 - val_loss: 13.0971 - val_out_stats_loss: 5.2721 - val_out_counts_loss: 2.2098 - val_out_mean_covariance_loss: 64.1189 - val_out_fielding_position_loss: 2.4092
+Epoch 35/1000
+
+Epoch 00035: val_loss improved from 13.09395 to 13.07287, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 12.2099 - out_stats_loss: 4.9562 - out_counts_loss: 1.9561 - out_mean_covariance_loss: 60.7340 - out_fielding_position_loss: 2.2608 - val_loss: 13.0729 - val_out_stats_loss: 5.2581 - val_out_counts_loss: 2.2031 - val_out_mean_covariance_loss: 64.1371 - val_out_fielding_position_loss: 2.4048
+Epoch 36/1000
+
+Epoch 00036: val_loss did not improve
+ - 5s - loss: 12.2283 - out_stats_loss: 4.9664 - out_counts_loss: 1.9478 - out_mean_covariance_loss: 60.8749 - out_fielding_position_loss: 2.2703 - val_loss: 13.1194 - val_out_stats_loss: 5.2978 - val_out_counts_loss: 2.2091 - val_out_mean_covariance_loss: 64.2198 - val_out_fielding_position_loss: 2.4015
+Epoch 37/1000
+
+Epoch 00037: val_loss did not improve
+ - 5s - loss: 12.1870 - out_stats_loss: 4.9540 - out_counts_loss: 1.9478 - out_mean_covariance_loss: 60.7324 - out_fielding_position_loss: 2.2486 - val_loss: 13.1064 - val_out_stats_loss: 5.2771 - val_out_counts_loss: 2.2293 - val_out_mean_covariance_loss: 64.0631 - val_out_fielding_position_loss: 2.3968
+Epoch 38/1000
+
+Epoch 00038: val_loss improved from 13.07287 to 13.06596, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 12.1113 - out_stats_loss: 4.9432 - out_counts_loss: 1.9065 - out_mean_covariance_loss: 60.6637 - out_fielding_position_loss: 2.2283 - val_loss: 13.0660 - val_out_stats_loss: 5.2644 - val_out_counts_loss: 2.2189 - val_out_mean_covariance_loss: 63.9035 - val_out_fielding_position_loss: 2.3875
+Epoch 39/1000
+
+Epoch 00039: val_loss did not improve
+ - 5s - loss: 12.1198 - out_stats_loss: 4.9477 - out_counts_loss: 1.9177 - out_mean_covariance_loss: 60.8643 - out_fielding_position_loss: 2.2111 - val_loss: 13.2107 - val_out_stats_loss: 5.3097 - val_out_counts_loss: 2.2876 - val_out_mean_covariance_loss: 64.2567 - val_out_fielding_position_loss: 2.4006
+Epoch 40/1000
+
+Epoch 00040: val_loss improved from 13.06596 to 13.03919, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 12.0800 - out_stats_loss: 4.9451 - out_counts_loss: 1.9073 - out_mean_covariance_loss: 60.3521 - out_fielding_position_loss: 2.2100 - val_loss: 13.0392 - val_out_stats_loss: 5.2567 - val_out_counts_loss: 2.2151 - val_out_mean_covariance_loss: 63.8805 - val_out_fielding_position_loss: 2.3734
+Epoch 41/1000
+
+Epoch 00041: val_loss did not improve
+ - 5s - loss: 11.9734 - out_stats_loss: 4.9076 - out_counts_loss: 1.8791 - out_mean_covariance_loss: 59.9537 - out_fielding_position_loss: 2.1891 - val_loss: 13.0541 - val_out_stats_loss: 5.2629 - val_out_counts_loss: 2.2275 - val_out_mean_covariance_loss: 63.7624 - val_out_fielding_position_loss: 2.3756
+Epoch 42/1000
+
+Epoch 00042: val_loss did not improve
+ - 5s - loss: 11.9524 - out_stats_loss: 4.8943 - out_counts_loss: 1.8875 - out_mean_covariance_loss: 59.6958 - out_fielding_position_loss: 2.1859 - val_loss: 13.0611 - val_out_stats_loss: 5.2668 - val_out_counts_loss: 2.2296 - val_out_mean_covariance_loss: 63.8799 - val_out_fielding_position_loss: 2.3707
+Epoch 43/1000
+
+Epoch 00043: val_loss improved from 13.03919 to 13.03055, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 11.9215 - out_stats_loss: 4.8991 - out_counts_loss: 1.8680 - out_mean_covariance_loss: 59.6974 - out_fielding_position_loss: 2.1695 - val_loss: 13.0305 - val_out_stats_loss: 5.2494 - val_out_counts_loss: 2.2333 - val_out_mean_covariance_loss: 63.6830 - val_out_fielding_position_loss: 2.3637
+Epoch 44/1000
+
+Epoch 00044: val_loss did not improve
+ - 5s - loss: 11.8716 - out_stats_loss: 4.8838 - out_counts_loss: 1.8665 - out_mean_covariance_loss: 59.4834 - out_fielding_position_loss: 2.1472 - val_loss: 13.0568 - val_out_stats_loss: 5.2604 - val_out_counts_loss: 2.2397 - val_out_mean_covariance_loss: 63.7850 - val_out_fielding_position_loss: 2.3675
+Epoch 45/1000
+
+Epoch 00045: val_loss did not improve
+ - 5s - loss: 11.8877 - out_stats_loss: 4.8984 - out_counts_loss: 1.8504 - out_mean_covariance_loss: 59.8136 - out_fielding_position_loss: 2.1483 - val_loss: 13.0972 - val_out_stats_loss: 5.2811 - val_out_counts_loss: 2.2593 - val_out_mean_covariance_loss: 63.9457 - val_out_fielding_position_loss: 2.3595
+Epoch 46/1000
+
+Epoch 00046: val_loss improved from 13.03055 to 13.02855, saving model to models/bc/shift2/max2016/simple-rnn/5.h5
+ - 5s - loss: 11.7713 - out_stats_loss: 4.8499 - out_counts_loss: 1.8297 - out_mean_covariance_loss: 59.1856 - out_fielding_position_loss: 2.1325 - val_loss: 13.0286 - val_out_stats_loss: 5.2596 - val_out_counts_loss: 2.2433 - val_out_mean_covariance_loss: 63.5959 - val_out_fielding_position_loss: 2.3459
+Epoch 47/1000
+
+Epoch 00047: val_loss did not improve
+ - 5s - loss: 11.7622 - out_stats_loss: 4.8576 - out_counts_loss: 1.8222 - out_mean_covariance_loss: 59.3179 - out_fielding_position_loss: 2.1165 - val_loss: 13.0658 - val_out_stats_loss: 5.2563 - val_out_counts_loss: 2.2691 - val_out_mean_covariance_loss: 63.7552 - val_out_fielding_position_loss: 2.3526
+Epoch 48/1000
+
+Epoch 00048: val_loss did not improve
+ - 5s - loss: 11.7089 - out_stats_loss: 4.8415 - out_counts_loss: 1.8192 - out_mean_covariance_loss: 58.7142 - out_fielding_position_loss: 2.1125 - val_loss: 13.0787 - val_out_stats_loss: 5.2765 - val_out_counts_loss: 2.2670 - val_out_mean_covariance_loss: 63.7182 - val_out_fielding_position_loss: 2.3492
+Epoch 49/1000
+
+Epoch 00049: val_loss did not improve
+ - 5s - loss: 11.7687 - out_stats_loss: 4.8880 - out_counts_loss: 1.8091 - out_mean_covariance_loss: 59.5207 - out_fielding_position_loss: 2.0955 - val_loss: 13.0944 - val_out_stats_loss: 5.2837 - val_out_counts_loss: 2.2935 - val_out_mean_covariance_loss: 63.6551 - val_out_fielding_position_loss: 2.3344
+Epoch 50/1000
+
+Epoch 00050: val_loss did not improve
+ - 5s - loss: 11.7054 - out_stats_loss: 4.8598 - out_counts_loss: 1.8002 - out_mean_covariance_loss: 59.0658 - out_fielding_position_loss: 2.0921 - val_loss: 13.1266 - val_out_stats_loss: 5.2948 - val_out_counts_loss: 2.2918 - val_out_mean_covariance_loss: 63.7831 - val_out_fielding_position_loss: 2.3508
+Epoch 51/1000
+
+Epoch 00051: val_loss did not improve
+ - 5s - loss: 11.6081 - out_stats_loss: 4.8221 - out_counts_loss: 1.7951 - out_mean_covariance_loss: 58.4150 - out_fielding_position_loss: 2.0702 - val_loss: 13.0664 - val_out_stats_loss: 5.2662 - val_out_counts_loss: 2.2885 - val_out_mean_covariance_loss: 63.7063 - val_out_fielding_position_loss: 2.3264
+Epoch 52/1000
+
+Epoch 00052: val_loss did not improve
+ - 5s - loss: 11.6481 - out_stats_loss: 4.8428 - out_counts_loss: 1.7803 - out_mean_covariance_loss: 59.0522 - out_fielding_position_loss: 2.0724 - val_loss: 13.0436 - val_out_stats_loss: 5.2696 - val_out_counts_loss: 2.2721 - val_out_mean_covariance_loss: 63.4994 - val_out_fielding_position_loss: 2.3270
+Epoch 53/1000
+
+Epoch 00053: val_loss did not improve
+ - 5s - loss: 11.5840 - out_stats_loss: 4.8219 - out_counts_loss: 1.7713 - out_mean_covariance_loss: 58.5410 - out_fielding_position_loss: 2.0638 - val_loss: 13.2494 - val_out_stats_loss: 5.3487 - val_out_counts_loss: 2.3718 - val_out_mean_covariance_loss: 63.9454 - val_out_fielding_position_loss: 2.3316
+Epoch 54/1000
+
+Epoch 00054: val_loss did not improve
+ - 5s - loss: 11.5311 - out_stats_loss: 4.8043 - out_counts_loss: 1.7697 - out_mean_covariance_loss: 58.1141 - out_fielding_position_loss: 2.0514 - val_loss: 13.1547 - val_out_stats_loss: 5.3066 - val_out_counts_loss: 2.3381 - val_out_mean_covariance_loss: 63.7459 - val_out_fielding_position_loss: 2.3227
+Epoch 55/1000
+
+Epoch 00055: val_loss did not improve
+ - 5s - loss: 11.5036 - out_stats_loss: 4.7933 - out_counts_loss: 1.7630 - out_mean_covariance_loss: 58.0918 - out_fielding_position_loss: 2.0428 - val_loss: 13.1356 - val_out_stats_loss: 5.2936 - val_out_counts_loss: 2.3333 - val_out_mean_covariance_loss: 63.6158 - val_out_fielding_position_loss: 2.3279
+Epoch 56/1000
+
+Epoch 00056: val_loss did not improve
+ - 5s - loss: 11.4967 - out_stats_loss: 4.8101 - out_counts_loss: 1.7408 - out_mean_covariance_loss: 58.2987 - out_fielding_position_loss: 2.0310 - val_loss: 13.1248 - val_out_stats_loss: 5.2930 - val_out_counts_loss: 2.3405 - val_out_mean_covariance_loss: 63.5052 - val_out_fielding_position_loss: 2.3161
+Epoch 57/1000
+
+Epoch 00057: val_loss did not improve
+ - 5s - loss: 11.4336 - out_stats_loss: 4.7927 - out_counts_loss: 1.7271 - out_mean_covariance_loss: 57.9835 - out_fielding_position_loss: 2.0146 - val_loss: 13.0906 - val_out_stats_loss: 5.2809 - val_out_counts_loss: 2.3263 - val_out_mean_covariance_loss: 63.6023 - val_out_fielding_position_loss: 2.3033
+Epoch 58/1000
+
+Epoch 00058: val_loss did not improve
+ - 5s - loss: 11.4874 - out_stats_loss: 4.7991 - out_counts_loss: 1.7668 - out_mean_covariance_loss: 58.0221 - out_fielding_position_loss: 2.0203 - val_loss: 13.1591 - val_out_stats_loss: 5.2996 - val_out_counts_loss: 2.3700 - val_out_mean_covariance_loss: 63.5894 - val_out_fielding_position_loss: 2.3101
+Epoch 59/1000
+
+Epoch 00059: val_loss did not improve
+ - 5s - loss: 11.4342 - out_stats_loss: 4.8028 - out_counts_loss: 1.7221 - out_mean_covariance_loss: 58.2005 - out_fielding_position_loss: 1.9993 - val_loss: 13.0940 - val_out_stats_loss: 5.2827 - val_out_counts_loss: 2.3328 - val_out_mean_covariance_loss: 63.4789 - val_out_fielding_position_loss: 2.3046
+Epoch 60/1000
+
+Epoch 00060: val_loss did not improve
+ - 5s - loss: 11.4027 - out_stats_loss: 4.8017 - out_counts_loss: 1.7262 - out_mean_covariance_loss: 57.8461 - out_fielding_position_loss: 1.9825 - val_loss: 13.1537 - val_out_stats_loss: 5.3215 - val_out_counts_loss: 2.3442 - val_out_mean_covariance_loss: 63.5674 - val_out_fielding_position_loss: 2.3095
+Epoch 61/1000
+
+Epoch 00061: val_loss did not improve
+ - 5s - loss: 11.3711 - out_stats_loss: 4.7810 - out_counts_loss: 1.7233 - out_mean_covariance_loss: 57.7976 - out_fielding_position_loss: 1.9769 - val_loss: 13.0879 - val_out_stats_loss: 5.2883 - val_out_counts_loss: 2.3425 - val_out_mean_covariance_loss: 63.4446 - val_out_fielding_position_loss: 2.2849
+Epoch 62/1000
+
+Epoch 00062: val_loss did not improve
+ - 5s - loss: 11.3401 - out_stats_loss: 4.7691 - out_counts_loss: 1.7209 - out_mean_covariance_loss: 57.4180 - out_fielding_position_loss: 1.9792 - val_loss: 13.1321 - val_out_stats_loss: 5.2878 - val_out_counts_loss: 2.3692 - val_out_mean_covariance_loss: 63.5598 - val_out_fielding_position_loss: 2.2970
+Epoch 63/1000
+
+Epoch 00063: val_loss did not improve
+ - 5s - loss: 11.2638 - out_stats_loss: 4.7379 - out_counts_loss: 1.7084 - out_mean_covariance_loss: 57.0770 - out_fielding_position_loss: 1.9635 - val_loss: 13.0776 - val_out_stats_loss: 5.2763 - val_out_counts_loss: 2.3484 - val_out_mean_covariance_loss: 63.3166 - val_out_fielding_position_loss: 2.2871
+Epoch 64/1000
+
+Epoch 00064: val_loss did not improve
+ - 5s - loss: 11.2663 - out_stats_loss: 4.7428 - out_counts_loss: 1.6948 - out_mean_covariance_loss: 57.3835 - out_fielding_position_loss: 1.9595 - val_loss: 13.2316 - val_out_stats_loss: 5.3360 - val_out_counts_loss: 2.4153 - val_out_mean_covariance_loss: 63.6116 - val_out_fielding_position_loss: 2.2997
+Epoch 65/1000
+
+Epoch 00065: val_loss did not improve
+ - 5s - loss: 11.2796 - out_stats_loss: 4.7598 - out_counts_loss: 1.6919 - out_mean_covariance_loss: 57.5625 - out_fielding_position_loss: 1.9497 - val_loss: 13.0955 - val_out_stats_loss: 5.2845 - val_out_counts_loss: 2.3768 - val_out_mean_covariance_loss: 63.2250 - val_out_fielding_position_loss: 2.2729
+Epoch 66/1000
+
+Epoch 00066: val_loss did not improve
+ - 5s - loss: 11.2325 - out_stats_loss: 4.7431 - out_counts_loss: 1.6974 - out_mean_covariance_loss: 57.0316 - out_fielding_position_loss: 1.9405 - val_loss: 13.0661 - val_out_stats_loss: 5.2843 - val_out_counts_loss: 2.3421 - val_out_mean_covariance_loss: 63.2097 - val_out_fielding_position_loss: 2.2793
+Epoch 67/1000
+
+Epoch 00067: val_loss did not improve
+ - 5s - loss: 11.2155 - out_stats_loss: 4.7395 - out_counts_loss: 1.6866 - out_mean_covariance_loss: 57.0671 - out_fielding_position_loss: 1.9361 - val_loss: 13.0617 - val_out_stats_loss: 5.2671 - val_out_counts_loss: 2.3572 - val_out_mean_covariance_loss: 63.2479 - val_out_fielding_position_loss: 2.2751
+Epoch 68/1000
+
+Epoch 00068: val_loss did not improve
+ - 5s - loss: 11.1592 - out_stats_loss: 4.7225 - out_counts_loss: 1.6793 - out_mean_covariance_loss: 56.7088 - out_fielding_position_loss: 1.9220 - val_loss: 13.1407 - val_out_stats_loss: 5.2979 - val_out_counts_loss: 2.3820 - val_out_mean_covariance_loss: 63.5130 - val_out_fielding_position_loss: 2.2853
+Epoch 69/1000
+
+Epoch 00069: val_loss did not improve
+ - 5s - loss: 11.1024 - out_stats_loss: 4.7028 - out_counts_loss: 1.6679 - out_mean_covariance_loss: 56.4243 - out_fielding_position_loss: 1.9104 - val_loss: 13.0967 - val_out_stats_loss: 5.2761 - val_out_counts_loss: 2.3789 - val_out_mean_covariance_loss: 63.2954 - val_out_fielding_position_loss: 2.2770
+Epoch 70/1000
+
+Epoch 00070: val_loss did not improve
+ - 5s - loss: 11.1246 - out_stats_loss: 4.7269 - out_counts_loss: 1.6498 - out_mean_covariance_loss: 57.0962 - out_fielding_position_loss: 1.8931 - val_loss: 13.0647 - val_out_stats_loss: 5.2742 - val_out_counts_loss: 2.3605 - val_out_mean_covariance_loss: 63.2719 - val_out_fielding_position_loss: 2.2663
+Epoch 71/1000
+
+Epoch 00071: val_loss did not improve
+ - 5s - loss: 11.1160 - out_stats_loss: 4.7203 - out_counts_loss: 1.6530 - out_mean_covariance_loss: 56.8103 - out_fielding_position_loss: 1.9022 - val_loss: 13.1604 - val_out_stats_loss: 5.3239 - val_out_counts_loss: 2.3938 - val_out_mean_covariance_loss: 63.4427 - val_out_fielding_position_loss: 2.2706
+Epoch 72/1000
+
+Epoch 00072: val_loss did not improve
+ - 5s - loss: 11.0500 - out_stats_loss: 4.7021 - out_counts_loss: 1.6424 - out_mean_covariance_loss: 56.2784 - out_fielding_position_loss: 1.8915 - val_loss: 13.0776 - val_out_stats_loss: 5.2748 - val_out_counts_loss: 2.3764 - val_out_mean_covariance_loss: 63.1904 - val_out_fielding_position_loss: 2.2669
+Epoch 73/1000
+
+Epoch 00073: val_loss did not improve
+ - 5s - loss: 11.0220 - out_stats_loss: 4.6877 - out_counts_loss: 1.6329 - out_mean_covariance_loss: 56.3151 - out_fielding_position_loss: 1.8856 - val_loss: 13.2419 - val_out_stats_loss: 5.3318 - val_out_counts_loss: 2.4473 - val_out_mean_covariance_loss: 63.6367 - val_out_fielding_position_loss: 2.2809
+Epoch 74/1000
+
+Epoch 00074: val_loss did not improve
+ - 5s - loss: 11.0436 - out_stats_loss: 4.7199 - out_counts_loss: 1.6243 - out_mean_covariance_loss: 56.7581 - out_fielding_position_loss: 1.8615 - val_loss: 13.1118 - val_out_stats_loss: 5.2941 - val_out_counts_loss: 2.3889 - val_out_mean_covariance_loss: 63.4763 - val_out_fielding_position_loss: 2.2550
+Epoch 75/1000
+
+Epoch 00075: val_loss did not improve
+ - 5s - loss: 11.0268 - out_stats_loss: 4.7090 - out_counts_loss: 1.6296 - out_mean_covariance_loss: 56.4214 - out_fielding_position_loss: 1.8671 - val_loss: 13.1012 - val_out_stats_loss: 5.2971 - val_out_counts_loss: 2.3916 - val_out_mean_covariance_loss: 63.2144 - val_out_fielding_position_loss: 2.2518
+Epoch 76/1000
+
+Epoch 00076: val_loss did not improve
+ - 5s - loss: 10.9733 - out_stats_loss: 4.6941 - out_counts_loss: 1.6175 - out_mean_covariance_loss: 56.2046 - out_fielding_position_loss: 1.8514 - val_loss: 13.1462 - val_out_stats_loss: 5.2983 - val_out_counts_loss: 2.4155 - val_out_mean_covariance_loss: 63.3316 - val_out_fielding_position_loss: 2.2658
+Epoch 77/1000
+
+Epoch 00077: val_loss did not improve
+ - 5s - loss: 10.9493 - out_stats_loss: 4.6823 - out_counts_loss: 1.6070 - out_mean_covariance_loss: 56.1571 - out_fielding_position_loss: 1.8521 - val_loss: 13.1563 - val_out_stats_loss: 5.3067 - val_out_counts_loss: 2.4273 - val_out_mean_covariance_loss: 63.3213 - val_out_fielding_position_loss: 2.2562
+Epoch 78/1000
+
+Epoch 00078: val_loss did not improve
+ - 5s - loss: 10.9309 - out_stats_loss: 4.6792 - out_counts_loss: 1.6035 - out_mean_covariance_loss: 56.0777 - out_fielding_position_loss: 1.8444 - val_loss: 13.2198 - val_out_stats_loss: 5.3262 - val_out_counts_loss: 2.4516 - val_out_mean_covariance_loss: 63.4877 - val_out_fielding_position_loss: 2.2676
+Epoch 79/1000
+
+Epoch 00079: val_loss did not improve
+ - 5s - loss: 10.9448 - out_stats_loss: 4.7008 - out_counts_loss: 1.5898 - out_mean_covariance_loss: 56.3970 - out_fielding_position_loss: 1.8343 - val_loss: 13.1634 - val_out_stats_loss: 5.3020 - val_out_counts_loss: 2.4293 - val_out_mean_covariance_loss: 63.4003 - val_out_fielding_position_loss: 2.2621
+Epoch 80/1000
+
+Epoch 00080: val_loss did not improve
+ - 5s - loss: 10.9200 - out_stats_loss: 4.6708 - out_counts_loss: 1.6067 - out_mean_covariance_loss: 56.0673 - out_fielding_position_loss: 1.8391 - val_loss: 13.1050 - val_out_stats_loss: 5.2829 - val_out_counts_loss: 2.4112 - val_out_mean_covariance_loss: 63.3450 - val_out_fielding_position_loss: 2.2437
+Epoch 81/1000
+
+Epoch 00081: val_loss did not improve
+ - 5s - loss: 10.8664 - out_stats_loss: 4.6492 - out_counts_loss: 1.5953 - out_mean_covariance_loss: 55.7268 - out_fielding_position_loss: 1.8356 - val_loss: 13.1486 - val_out_stats_loss: 5.3024 - val_out_counts_loss: 2.4186 - val_out_mean_covariance_loss: 63.5022 - val_out_fielding_position_loss: 2.2525
+Epoch 82/1000
+
+Epoch 00082: val_loss did not improve
+ - 5s - loss: 10.8419 - out_stats_loss: 4.6460 - out_counts_loss: 1.5919 - out_mean_covariance_loss: 55.6640 - out_fielding_position_loss: 1.8208 - val_loss: 13.2883 - val_out_stats_loss: 5.3279 - val_out_counts_loss: 2.4922 - val_out_mean_covariance_loss: 63.8101 - val_out_fielding_position_loss: 2.2776
+Epoch 83/1000
+
+Epoch 00083: val_loss did not improve
+ - 5s - loss: 10.8103 - out_stats_loss: 4.6532 - out_counts_loss: 1.5803 - out_mean_covariance_loss: 55.5852 - out_fielding_position_loss: 1.7976 - val_loss: 13.1626 - val_out_stats_loss: 5.2921 - val_out_counts_loss: 2.4446 - val_out_mean_covariance_loss: 63.6412 - val_out_fielding_position_loss: 2.2438
+Epoch 84/1000
+
+Epoch 00084: val_loss did not improve
+ - 5s - loss: 10.8019 - out_stats_loss: 4.6449 - out_counts_loss: 1.5776 - out_mean_covariance_loss: 55.6757 - out_fielding_position_loss: 1.7956 - val_loss: 13.2669 - val_out_stats_loss: 5.3250 - val_out_counts_loss: 2.4832 - val_out_mean_covariance_loss: 63.7240 - val_out_fielding_position_loss: 2.2725
+Epoch 85/1000
+
+Epoch 00085: val_loss did not improve
+ - 5s - loss: 10.8960 - out_stats_loss: 4.6975 - out_counts_loss: 1.5660 - out_mean_covariance_loss: 56.6386 - out_fielding_position_loss: 1.8006 - val_loss: 13.1701 - val_out_stats_loss: 5.3033 - val_out_counts_loss: 2.4407 - val_out_mean_covariance_loss: 63.6065 - val_out_fielding_position_loss: 2.2457
+Epoch 86/1000
+
+Epoch 00086: val_loss did not improve
+ - 5s - loss: 10.7973 - out_stats_loss: 4.6604 - out_counts_loss: 1.5682 - out_mean_covariance_loss: 55.5268 - out_fielding_position_loss: 1.7924 - val_loss: 13.2680 - val_out_stats_loss: 5.3349 - val_out_counts_loss: 2.4807 - val_out_mean_covariance_loss: 63.8220 - val_out_fielding_position_loss: 2.2614
+Epoch 87/1000
+
+Epoch 00087: val_loss did not improve
+ - 5s - loss: 10.7649 - out_stats_loss: 4.6426 - out_counts_loss: 1.5773 - out_mean_covariance_loss: 55.1889 - out_fielding_position_loss: 1.7856 - val_loss: 13.1835 - val_out_stats_loss: 5.2964 - val_out_counts_loss: 2.4494 - val_out_mean_covariance_loss: 63.7157 - val_out_fielding_position_loss: 2.2519
+Epoch 88/1000
+
+Epoch 00088: val_loss did not improve
+ - 5s - loss: 10.7776 - out_stats_loss: 4.6454 - out_counts_loss: 1.5658 - out_mean_covariance_loss: 55.6226 - out_fielding_position_loss: 1.7853 - val_loss: 13.2666 - val_out_stats_loss: 5.3277 - val_out_counts_loss: 2.4723 - val_out_mean_covariance_loss: 63.9148 - val_out_fielding_position_loss: 2.2708
+Epoch 89/1000
+
+Epoch 00089: val_loss did not improve
+ - 5s - loss: 10.7175 - out_stats_loss: 4.6289 - out_counts_loss: 1.5522 - out_mean_covariance_loss: 55.4141 - out_fielding_position_loss: 1.7656 - val_loss: 13.1778 - val_out_stats_loss: 5.3040 - val_out_counts_loss: 2.4517 - val_out_mean_covariance_loss: 63.6316 - val_out_fielding_position_loss: 2.2405
+Epoch 90/1000
+
+Epoch 00090: val_loss did not improve
+ - 5s - loss: 10.7151 - out_stats_loss: 4.6279 - out_counts_loss: 1.5545 - out_mean_covariance_loss: 55.1448 - out_fielding_position_loss: 1.7754 - val_loss: 13.3506 - val_out_stats_loss: 5.3526 - val_out_counts_loss: 2.5190 - val_out_mean_covariance_loss: 64.1611 - val_out_fielding_position_loss: 2.2710
+Epoch 91/1000
+
+Epoch 00091: val_loss did not improve
+ - 4s - loss: 10.6632 - out_stats_loss: 4.6095 - out_counts_loss: 1.5528 - out_mean_covariance_loss: 54.9579 - out_fielding_position_loss: 1.7530 - val_loss: 13.2281 - val_out_stats_loss: 5.3175 - val_out_counts_loss: 2.4722 - val_out_mean_covariance_loss: 63.7689 - val_out_fielding_position_loss: 2.2499
+Epoch 92/1000
+
+Epoch 00092: val_loss did not improve
+ - 5s - loss: 10.6996 - out_stats_loss: 4.6379 - out_counts_loss: 1.5381 - out_mean_covariance_loss: 55.5343 - out_fielding_position_loss: 1.7470 - val_loss: 13.3454 - val_out_stats_loss: 5.3476 - val_out_counts_loss: 2.5239 - val_out_mean_covariance_loss: 64.2403 - val_out_fielding_position_loss: 2.2619
+Epoch 93/1000
+
+Epoch 00093: val_loss did not improve
+ - 5s - loss: 10.6737 - out_stats_loss: 4.6220 - out_counts_loss: 1.5419 - out_mean_covariance_loss: 55.2843 - out_fielding_position_loss: 1.7457 - val_loss: 13.3934 - val_out_stats_loss: 5.3602 - val_out_counts_loss: 2.5439 - val_out_mean_covariance_loss: 64.4196 - val_out_fielding_position_loss: 2.2684
+Epoch 94/1000
+
+Epoch 00094: val_loss did not improve
+ - 5s - loss: 10.6773 - out_stats_loss: 4.6245 - out_counts_loss: 1.5412 - out_mean_covariance_loss: 55.1964 - out_fielding_position_loss: 1.7518 - val_loss: 13.2181 - val_out_stats_loss: 5.3174 - val_out_counts_loss: 2.4749 - val_out_mean_covariance_loss: 63.9202 - val_out_fielding_position_loss: 2.2297
+Epoch 95/1000
+
+Epoch 00095: val_loss did not improve
+ - 5s - loss: 10.5744 - out_stats_loss: 4.5876 - out_counts_loss: 1.5368 - out_mean_covariance_loss: 54.4478 - out_fielding_position_loss: 1.7277 - val_loss: 13.3648 - val_out_stats_loss: 5.3616 - val_out_counts_loss: 2.5307 - val_out_mean_covariance_loss: 64.2209 - val_out_fielding_position_loss: 2.2614
+Epoch 96/1000
+
+Epoch 00096: val_loss did not improve
+ - 5s - loss: 10.5192 - out_stats_loss: 4.5691 - out_counts_loss: 1.5116 - out_mean_covariance_loss: 54.3653 - out_fielding_position_loss: 1.7203 - val_loss: 13.2023 - val_out_stats_loss: 5.3273 - val_out_counts_loss: 2.4552 - val_out_mean_covariance_loss: 63.8211 - val_out_fielding_position_loss: 2.2287
+/usr/local/lib/python3.5/dist-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+Using TensorFlow backend.
+Years: [1958,2016]
+Shift: 2
+Fold: 4
+Training into models/bc/shift2/max2016/simple-rnn/5.h5
+/usr/local/lib/python3.5/dist-packages/keras/legacy/layers.py:533: UserWarning: The `MaxoutDense` layer is deprecated and will be removed after 06/2017.
+  warnings.warn('The `MaxoutDense` layer is deprecated '
